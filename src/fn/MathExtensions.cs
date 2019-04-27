@@ -63,39 +63,39 @@ namespace fn
         {
             internal static class M
             {
-                internal static int Five() => Multiplication.Single(5);
-                internal static int Ten() => Multiplication.Double(5);
-                internal static int Fifteen() => Multiplication.Triple(5);
+                internal static int Five => Multiplication.Single(5);
+                internal static int Ten => Multiplication.Double(5);
+                internal static int Fifteen => Multiplication.Triple(5);
             }
 
             internal static class D
             {
-                internal static int Five() => Division.ByOne(5);
-                internal static int Two() => Division.ByTwo(5);
-                internal static int One() => Division.ByThree(5);
+                internal static int Five => Division.ByOne(5);
+                internal static int Two => Division.ByTwo(5);
+                internal static int One => Division.ByThree(5);
             }
 
             internal static class S
             {
-                internal static int Four() => Substraction.MinusOne(5);
-                internal static int Three() => Substraction.MinusTwo(5);
-                internal static int Two() => Substraction.MinusThree(5);
+                internal static int Four => Substraction.MinusOne(5);
+                internal static int Three => Substraction.MinusTwo(5);
+                internal static int Two => Substraction.MinusThree(5);
             }
 
             internal static void RunMath()
             {
                 WriteLine($"{Dashes} Multiply  {Dashes}");
-                WriteLine(M.Five());
-                WriteLine(M.Ten());
-                WriteLine(M.Fifteen());
+                WriteLine(M.Five);
+                WriteLine(M.Ten);
+                WriteLine(M.Fifteen);
                 WriteLine($"{Dashes} Divide    {Dashes}");
-                WriteLine(D.Five());
-                WriteLine(D.Two());
-                WriteLine(D.One());
+                WriteLine(D.Five);
+                WriteLine(D.Two);
+                WriteLine(D.One);
                 WriteLine($"{Dashes} Substract {Dashes}");
-                WriteLine(S.Four());
-                WriteLine(S.Three());
-                WriteLine(S.Two());
+                WriteLine(S.Four);
+                WriteLine(S.Three);
+                WriteLine(S.Two);
             }
         }
     }
