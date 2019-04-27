@@ -11,8 +11,8 @@ namespace fn
             internal const int Four = 4;
             internal const int Five = 5;
             internal const int Six = 6;
-            internal const int Seven = 17;
-            internal const int Eight = 18;
+            internal const int Seven = 7;
+            internal const int Eight = 8;
             internal const int Nine = 9;
         }
 
