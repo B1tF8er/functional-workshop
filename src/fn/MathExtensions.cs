@@ -7,6 +7,12 @@ namespace fn
 
     internal static class MathExtensions
     {
+        /*
+         * Arrow notations, this is right assosiative
+         * (int) -> ((int) -> (int))
+         * int -> int -> int
+         */
+
         internal static class Multiplication
         {
             private static Func<int, Func<int, int>> Multiply() =>
