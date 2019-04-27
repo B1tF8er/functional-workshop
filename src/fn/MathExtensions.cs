@@ -59,6 +59,22 @@ namespace fn
             internal static int MinusThree(int subtrahend) => Minus(Three)(subtrahend);
         }
 
+        internal static class Addition
+        {
+            private static Func<int, Func<int, int>> Add() =>
+                (augend) => (addend) => augend + addend;
+
+            internal static int Add((int, int) factors) =>
+                Add()(factors.Item1)(factors.Item2);
+
+            internal static Func<int, int> Plus(int augend) =>
+                Add()(augend);
+
+            internal static int PlusOne(int addend) => Plus(One)(addend);
+            internal static int PlusTwo(int addend) => Plus(Two)(addend);
+            internal static int PlusThree(int addend) => Plus(Three)(addend);
+        }
+
         internal static class Examples
         {
             internal static class M
@@ -82,6 +98,13 @@ namespace fn
                 internal static int Two => Substraction.MinusThree(5);
             }
 
+            internal static class A
+            {
+                internal static int Six => Addition.PlusOne(5);
+                internal static int Seven => Addition.PlusTwo(5);
+                internal static int Eight => Addition.PlusThree(5);
+            }
+
             internal static void RunMath()
             {
                 WriteLine($"{Dashes} Multiply  {Dashes}");
@@ -96,6 +119,10 @@ namespace fn
                 WriteLine(S.Four);
                 WriteLine(S.Three);
                 WriteLine(S.Two);
+                WriteLine($"{Dashes} Add       {Dashes}");
+                WriteLine(A.Six);
+                WriteLine(A.Seven);
+                WriteLine(A.Eight);
             }
         }
     }
