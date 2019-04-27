@@ -13,7 +13,7 @@ namespace fn
                 (multiplicand) => (multiplier) => multiplicand * multiplier;
 
             internal static int Multiply((int, int) factors) =>
-                Multiply()(factors.Item1)(factors.Item1);
+                Multiply()(factors.Item1)(factors.Item2);
 
             internal static Func<int, int> MultiplyBy(int multiplicand) =>
                 Multiply()(multiplicand);
@@ -31,7 +31,7 @@ namespace fn
                 (divisor) => (dividend) => dividend / divisor;
 
             internal static int Divide((int, int) factors) =>
-                Divide()(factors.Item1)(factors.Item1);
+                Divide()(factors.Item1)(factors.Item2);
 
             internal static Func<int, int> DivideyBy(int divisor) =>
                 Divide()(divisor);
@@ -41,6 +41,22 @@ namespace fn
             internal static int ByTwo(int dividend) => DivideyBy(Two)(dividend);
 
             internal static int ByThree(int dividend) => DivideyBy(Three)(dividend);
+        }
+
+        internal static class Substraction
+        {
+            private static Func<int, Func<int, int>> Substract() =>
+                (subtrahend) => (minuend) => minuend - subtrahend;
+
+            internal static int Substract((int, int) factors) =>
+                Substract()(factors.Item1)(factors.Item2);
+
+            internal static Func<int, int> Minus(int subtrahend) =>
+                Substract()(subtrahend);
+
+            internal static int MinusOne(int subtrahend) => Minus(One)(subtrahend);
+            internal static int MinusTwo(int subtrahend) => Minus(Two)(subtrahend);
+            internal static int MinusThree(int subtrahend) => Minus(Three)(subtrahend);
         }
 
         internal static class Examples
@@ -59,16 +75,27 @@ namespace fn
                 internal static int One() => Division.ByThree(5);
             }
 
+            internal static class S
+            {
+                internal static int Four() => Substraction.MinusOne(5);
+                internal static int Three() => Substraction.MinusTwo(5);
+                internal static int Two() => Substraction.MinusThree(5);
+            }
+
             internal static void RunMath()
             {
-                WriteLine($"{Dashes} Multiply {Dashes}");
+                WriteLine($"{Dashes} Multiply  {Dashes}");
                 WriteLine(M.Five());
                 WriteLine(M.Ten());
                 WriteLine(M.Fifteen());
-                WriteLine($"{Dashes} Divide   {Dashes}");
+                WriteLine($"{Dashes} Divide    {Dashes}");
                 WriteLine(D.Five());
                 WriteLine(D.Two());
                 WriteLine(D.One());
+                WriteLine($"{Dashes} Substract {Dashes}");
+                WriteLine(S.Four());
+                WriteLine(S.Three());
+                WriteLine(S.Two());
             }
         }
     }
