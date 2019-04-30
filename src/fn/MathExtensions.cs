@@ -85,30 +85,30 @@ namespace fn
         {
             internal static class M
             {
-                internal static int Five => Multiplication.Single(5);
-                internal static int Ten => Multiplication.Double(5);
-                internal static int Fifteen => Multiplication.Triple(5);
+                internal static int Five => Multiplication.Single(Constants.Numbers.Five);
+                internal static int Ten => Multiplication.Double(Constants.Numbers.Five);
+                internal static int Fifteen => Multiplication.Triple(Constants.Numbers.Five);
             }
 
             internal static class D
             {
-                internal static int Five => Division.ByOne(5);
-                internal static int Two => Division.ByTwo(5);
-                internal static int One => Division.ByThree(5);
+                internal static int Five => Division.ByOne(Constants.Numbers.Five);
+                internal static int Two => Division.ByTwo(Constants.Numbers.Five);
+                internal static int One => Division.ByThree(Constants.Numbers.Five);
             }
 
             internal static class S
             {
-                internal static int Four => Substraction.MinusOne(5);
-                internal static int Three => Substraction.MinusTwo(5);
-                internal static int Two => Substraction.MinusThree(5);
+                internal static int Four => Substraction.MinusOne(Constants.Numbers.Five);
+                internal static int Three => Substraction.MinusTwo(Constants.Numbers.Five);
+                internal static int Two => Substraction.MinusThree(Constants.Numbers.Five);
             }
 
             internal static class A
             {
-                internal static int Six => Addition.PlusOne(5);
-                internal static int Seven => Addition.PlusTwo(5);
-                internal static int Eight => Addition.PlusThree(5);
+                internal static int Six => Addition.PlusOne(Constants.Numbers.Five);
+                internal static int Seven => Addition.PlusTwo(Constants.Numbers.Five);
+                internal static int Eight => Addition.PlusThree(Constants.Numbers.Five);
             }
 
             internal static void RunMath()
