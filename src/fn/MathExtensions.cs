@@ -49,8 +49,7 @@ namespace fn
 
         internal static class Addition
         {
-            private static BinaryF Add() =>
-                (augend) => (addend) => augend + addend;
+            private static BinaryF Add() => (augend) => (addend) => augend + addend;
             internal static int Add((int, int) factors) => Add()(factors.Item1)(factors.Item2);
             internal static UnaryF Plus(int augend) => Add()(augend);
             internal static int PlusOne(int addend) => Plus(One)(addend);
