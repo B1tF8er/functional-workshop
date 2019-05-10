@@ -2,6 +2,8 @@
 namespace fn
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using static Constants.Numbers;
     using static Constants.Separators;
     using static System.Console;
@@ -59,52 +61,37 @@ namespace fn
 
         internal static class Examples
         {
-            internal static class M
+            internal static IEnumerable<int> Operations()
             {
-                internal static int Five => Multiplication.Single(Constants.Numbers.Five);
-                internal static int Ten => Multiplication.Double(Constants.Numbers.Five);
-                internal static int Fifteen => Multiplication.Triple(Constants.Numbers.Five);
-            }
-
-            internal static class D
-            {
-                internal static int Five => Division.ByOne(Constants.Numbers.Five);
-                internal static int Two => Division.ByTwo(Constants.Numbers.Five);
-                internal static int One => Division.ByThree(Constants.Numbers.Five);
-            }
-
-            internal static class S
-            {
-                internal static int Four => Substraction.MinusOne(Constants.Numbers.Five);
-                internal static int Three => Substraction.MinusTwo(Constants.Numbers.Five);
-                internal static int Two => Substraction.MinusThree(Constants.Numbers.Five);
-            }
-
-            internal static class A
-            {
-                internal static int Six => Addition.PlusOne(Constants.Numbers.Five);
-                internal static int Seven => Addition.PlusTwo(Constants.Numbers.Five);
-                internal static int Eight => Addition.PlusThree(Constants.Numbers.Five);
+                yield return Multiplication.Single(Constants.Numbers.Five);
+                yield return Multiplication.Double(Constants.Numbers.Five);
+                yield return Multiplication.Triple(Constants.Numbers.Five);
+                yield return Division.ByOne(Constants.Numbers.Five);
+                yield return Division.ByTwo(Constants.Numbers.Five);
+                yield return Division.ByThree(Constants.Numbers.Five);
+                yield return Substraction.MinusOne(Constants.Numbers.Five);
+                yield return Substraction.MinusTwo(Constants.Numbers.Five);
+                yield return Substraction.MinusThree(Constants.Numbers.Five);
+                yield return Addition.PlusOne(Constants.Numbers.Five);
+                yield return Addition.PlusTwo(Constants.Numbers.Five);
+                yield return Addition.PlusThree(Constants.Numbers.Five);
             }
 
             internal static void RunMath()
             {
-                WriteLine($"{Dashes} Multiply  {Dashes}");
-                WriteLine(M.Five);
-                WriteLine(M.Ten);
-                WriteLine(M.Fifteen);
-                WriteLine($"{Dashes} Divide    {Dashes}");
-                WriteLine(D.Five);
-                WriteLine(D.Two);
-                WriteLine(D.One);
-                WriteLine($"{Dashes} Substract {Dashes}");
-                WriteLine(S.Four);
-                WriteLine(S.Three);
-                WriteLine(S.Two);
-                WriteLine($"{Dashes} Add       {Dashes}");
-                WriteLine(A.Six);
-                WriteLine(A.Seven);
-                WriteLine(A.Eight);
+                GetOperationsFor(" Multiply  ", 0, 3);
+                GetOperationsFor(" Divide    ", 3, 3);
+                GetOperationsFor(" Substract ", 6, 3);
+                GetOperationsFor(" Add       ", 9, 3);
+            }
+
+            internal static void GetOperationsFor(string message, int from, int to)
+            {
+                WriteLine($"{Dashes}{message}{Dashes}");
+
+                var operationFiltered = Operations().Skip(from).Take(to);
+                foreach (var operation in operationFiltered)
+                    WriteLine(operation);
             }
         }
     }
