@@ -61,37 +61,46 @@ namespace fn
 
         internal static class Examples
         {
-            internal static IEnumerable<int> Operations()
+            private static IDictionary<string, int> Types = new Dictionary<string, int>()
             {
-                yield return Multiplication.Single(Constants.Numbers.Five);
-                yield return Multiplication.Double(Constants.Numbers.Five);
-                yield return Multiplication.Triple(Constants.Numbers.Five);
-                yield return Division.ByOne(Constants.Numbers.Five);
-                yield return Division.ByTwo(Constants.Numbers.Five);
-                yield return Division.ByThree(Constants.Numbers.Five);
-                yield return Substraction.MinusOne(Constants.Numbers.Five);
-                yield return Substraction.MinusTwo(Constants.Numbers.Five);
-                yield return Substraction.MinusThree(Constants.Numbers.Five);
-                yield return Addition.PlusOne(Constants.Numbers.Five);
-                yield return Addition.PlusTwo(Constants.Numbers.Five);
-                yield return Addition.PlusThree(Constants.Numbers.Five);
-            }
+                { " Multiply  ", 0 },
+                { " Divide    ", 3 },
+                { " Substract ", 6 },
+                { " Add       ", 9 },
+            };
 
             internal static void RunMath()
             {
-                GetOperationsFor(" Multiply  ", 0, 3);
-                GetOperationsFor(" Divide    ", 3, 3);
-                GetOperationsFor(" Substract ", 6, 3);
-                GetOperationsFor(" Add       ", 9, 3);
+                foreach (var type in Types)
+                    GetOperationsFor(type.Key, type.Value, Three);
             }
 
-            internal static void GetOperationsFor(string message, int from, int to)
+            private static void GetOperationsFor(string message, int from, int to)
             {
                 WriteLine($"{Dashes}{message}{Dashes}");
 
-                var operationFiltered = Operations().Skip(from).Take(to);
+                var operationFiltered = Operations.Skip(from).Take(to);
                 foreach (var operation in operationFiltered)
                     WriteLine(operation);
+            }
+
+            private static IEnumerable<int> Operations
+            {
+                get
+                {
+                    yield return Multiplication.Single(Constants.Numbers.Five);
+                    yield return Multiplication.Double(Constants.Numbers.Five);
+                    yield return Multiplication.Triple(Constants.Numbers.Five);
+                    yield return Division.ByOne(Constants.Numbers.Five);
+                    yield return Division.ByTwo(Constants.Numbers.Five);
+                    yield return Division.ByThree(Constants.Numbers.Five);
+                    yield return Substraction.MinusOne(Constants.Numbers.Five);
+                    yield return Substraction.MinusTwo(Constants.Numbers.Five);
+                    yield return Substraction.MinusThree(Constants.Numbers.Five);
+                    yield return Addition.PlusOne(Constants.Numbers.Five);
+                    yield return Addition.PlusTwo(Constants.Numbers.Five);
+                    yield return Addition.PlusThree(Constants.Numbers.Five);
+                }
             }
         }
     }
