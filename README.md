@@ -13,3 +13,10 @@ docker build -t fn-image .
 # run image using tag ^^
 docker run --rm fn-image
 ```
+
+## Arrow notation
+```
+Arrow notations, this is right assosiative
+(int) -> ((int) -> (int))
+int -> int -> int
+```
