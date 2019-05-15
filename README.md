@@ -27,7 +27,7 @@ using System.Diagnostics;
 
 internal static class TestDelegates
 {
-    // () -> string
+    // string -> ()
     private delegate void LoggerDelegate(string message);
     // string -> string
     private delegate string LoggerWithResponseDelegate(string message);
@@ -87,7 +87,7 @@ internal static class TestActions
 {
     internal static void Run()
     {
-        // () -> string
+        // string -> ()
         Action<string> consoleLoggerHandler = ConsoleLogger;
         Action<string> debugLoggerHandler = DebugLogger;
         Action<string> allConsoleHandlers = consoleLoggerHandler + debugLoggerHandler;
