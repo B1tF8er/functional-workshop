@@ -26,18 +26,18 @@ int -> int -> int
 using System;
 using System.Diagnostics;
 
-public static class TestDelegates
+internal static class TestDelegates
 {
-    public delegate void LoggerDelegate(string message);
-    public delegate string LoggerWithResponseDelegate(string message);
+    private delegate void LoggerDelegate(string message);
+    private delegate string LoggerWithResponseDelegate(string message);
 
-    public static void Run()
+    internal static void Run()
     {
         RunVoidDelegates();
         RunResponseDelegates();
     }
 
-    public static void RunVoidDelegates()
+    private static void RunVoidDelegates()
     {
         LoggerDelegate consoleLoggerHandler = ConsoleLogger;
         LoggerDelegate debugLoggerHandler = DebugLogger;
@@ -48,7 +48,7 @@ public static class TestDelegates
         allConsoleHandlers("this goes to all");
     }
 
-    public static void RunResponseDelegates()
+    private static void RunResponseDelegates()
     {
         LoggerWithResponseDelegate consoleLoggerHandler = ConsoleLoggerWithResponse;
         LoggerWithResponseDelegate debugLoggerHandler = DebugLoggerWithResponse;
@@ -59,17 +59,17 @@ public static class TestDelegates
         var lastResponse = allConsoleHandlers("this goes to all");
     }
 
-    public static void ConsoleLogger(string message) => Console.WriteLine(message);
+    private static void ConsoleLogger(string message) => Console.WriteLine(message);
 
-    public static void DebugLogger(string message) => Debug.WriteLine(message);
+    private static void DebugLogger(string message) => Debug.WriteLine(message);
 
-    public static string ConsoleLoggerWithResponse(string message)
+    private static string ConsoleLoggerWithResponse(string message)
     {
         Console.WriteLine(message);
         return "Logged to console";
     }
 
-    public static string DebugLoggerWithResponse(string message)
+    private static string DebugLoggerWithResponse(string message)
     {
         Debug.WriteLine(message);
         return "Logged to debug";
@@ -82,9 +82,9 @@ public static class TestDelegates
 using System;
 using System.Diagnostics;
 
-public static class TestActions
+internal static class TestActions
 {
-    public static void Run()
+    internal static void Run()
     {
         Action<string> consoleLoggerHandler = ConsoleLogger;
         Action<string> debugLoggerHandler = DebugLogger;
@@ -95,9 +95,9 @@ public static class TestActions
         allConsoleHandlers("this goes to all");
     }
 
-    public static void ConsoleLogger(string message) => Console.WriteLine(message);
+    private static void ConsoleLogger(string message) => Console.WriteLine(message);
 
-    public static void DebugLogger(string message) => Debug.WriteLine(message);
+    private static void DebugLogger(string message) => Debug.WriteLine(message);
 }
 ```
 
@@ -106,9 +106,9 @@ public static class TestActions
 using System;
 using System.Diagnostics;
 
-public static class TestFuncs
+internal static class TestFuncs
 {
-    public static void Run()
+    internal static void Run()
     {
         Func<string, string> consoleLoggerHandler = ConsoleLogger;
         Func<string, string> debugLoggerHandler = DebugLogger;
@@ -119,13 +119,13 @@ public static class TestFuncs
         var lastResponse = allConsoleHandlers("this goes to all");
     }
 
-    public static string ConsoleLogger(string message)
+    private static string ConsoleLogger(string message)
     {
         Console.WriteLine(message);
         return "Logged to console";
     }
 
-    public static string DebugLogger(string message)
+    private static string DebugLogger(string message)
     {
         Debug.WriteLine(message);
         return "Logged to debug";
