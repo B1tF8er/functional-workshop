@@ -15,12 +15,11 @@ docker run --rm fn-image
 ```
 
 ## Arrow notation
-```
 Arrow notations, this is right assosiative
 (int) -> ((int) -> (int)) *EQUALS* int -> int -> int
 
 That can be read as a function that takes 2 integers as arguments
-and returns another integer in C# we have three ways to crete that
+and returns another integer in C# we have three ways to create that
 e.g :
 
 *Delegates* left and right are the first two ints in the signature
@@ -33,10 +32,9 @@ _private Func<int, int, int> ExampleFunc;_
 
 *Actions* are a special case, it is read as Funcs
 but they always return void, so this is read as
-a function that takes two ints as parameters and
+a function that takes 3 ints as parameters and
 returns void 
-_private Action<int, int> ExampleAction;_
-```
+_private Action<int, int, int> ExampleAction;_
 
 ## Delegates
 ```csharp
