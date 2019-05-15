@@ -46,8 +46,7 @@ namespace fn
         {
             WriteLine($"{Dashes}{message}{Dashes}");
 
-            var operationFiltered = Operations.Skip(from).Take(to);
-            foreach (var operation in operationFiltered)
+            foreach (var operation in Operations.Skip(from).Take(to))
                 WriteLine(operation);
         }
     }
