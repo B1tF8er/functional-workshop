@@ -18,6 +18,17 @@ docker run --rm fn-image
 ```
 Arrow notations, this is right assosiative
 (int) -> ((int) -> (int)) EQUALS int -> int -> int
+
+That can be read as a function that takes 2 integers as arguments
+and returns another integer e.g:
+
+// left and right are the first two ints in the signature
+// and the return type is the third int
+private delegate int ExampleDelegate(int left, int right);
+
+// in the case of Func, it can be read as in the example the first two are
+// the arguments, and the last one is the return type
+private Func<int, int, int> ExampleFunc;
 ```
 
 ## Delegates
