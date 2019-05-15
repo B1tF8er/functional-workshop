@@ -17,8 +17,7 @@ docker run --rm fn-image
 ## Arrow notation
 ```
 Arrow notations, this is right assosiative
-(int) -> ((int) -> (int))
-int -> int -> int
+(int) -> ((int) -> (int)) EQUALS int -> int -> int
 ```
 
 ## Delegates
@@ -28,7 +27,9 @@ using System.Diagnostics;
 
 internal static class TestDelegates
 {
+    // () -> string
     private delegate void LoggerDelegate(string message);
+    // string -> string
     private delegate string LoggerWithResponseDelegate(string message);
 
     internal static void Run()
@@ -86,6 +87,7 @@ internal static class TestActions
 {
     internal static void Run()
     {
+        // () -> string
         Action<string> consoleLoggerHandler = ConsoleLogger;
         Action<string> debugLoggerHandler = DebugLogger;
         Action<string> allConsoleHandlers = consoleLoggerHandler + debugLoggerHandler;
@@ -110,6 +112,7 @@ internal static class TestFuncs
 {
     internal static void Run()
     {
+        // string -> string
         Func<string, string> consoleLoggerHandler = ConsoleLogger;
         Func<string, string> debugLoggerHandler = DebugLogger;
         Func<string, string> allConsoleHandlers = consoleLoggerHandler + debugLoggerHandler;
