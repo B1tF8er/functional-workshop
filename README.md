@@ -150,3 +150,24 @@ internal static class TestFuncs
     }
 }
 ```
+
+## Curried Functions
+```csharp
+using System;
+using static System.Console;
+					
+internal class TestCurriedFunctions
+{
+	public static void Main()
+	{
+		WriteLine(Greeter("Hello")("World"));
+		WriteLine(Sum(5)(18));
+	}
+	
+	private static Func<string, Func<string, string>> Greeter =>
+		(argOne) => (argTwo) => $"{argOne} {argTwo}";
+	
+	private static Func<int, Func<int, int>> Sum =>
+		(lhs) => (rhs) => lhs + rhs; 
+}
+```
