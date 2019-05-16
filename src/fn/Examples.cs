@@ -1,5 +1,6 @@
 namespace fn
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using static Constants.Numbers;
@@ -9,7 +10,7 @@ namespace fn
 
     internal static class Examples
     {
-        private static IDictionary<string, int> Types = new Dictionary<string, int>()
+        private static IDictionary<string, int> MathOperations = new Dictionary<string, int>()
         {
             { " Multiply  ", 0 },
             { " Divide    ", 3 },
@@ -36,18 +37,42 @@ namespace fn
             }
         }
 
-        internal static void RunMath()
+        private static IDictionary<string, Action> Samples = new Dictionary<string, Action>()
         {
-            foreach (var type in Types)
+            { " Delegates           ", TestDelegates.Run },
+            { " Actions             ", TestActions.Run },
+            { " Funcs               ", TestFuncs.Run },
+            { " Curried Functions   ", TestCurriedFunctions.Run },
+            { " Partial Application ", TestPartialApplication.Run }
+        };
+
+        internal static void Run()
+        {
+            RunMath();
+            RunSamples();
+        }
+        
+        private static void RunMath()
+        {
+            foreach (var type in MathOperations)
                 GetOperationsFor(type.Key, type.Value, Three);
         }
 
         private static void GetOperationsFor(string message, int from, int to)
         {
-            WriteLine($"{Dashes}{message}{Dashes}");
+            WriteLine();
 
             foreach (var operation in Operations.Skip(from).Take(to))
                 WriteLine(operation);
+        }
+
+        private static void RunSamples()
+        {
+            foreach (var sample in Samples)
+            {
+                WriteLine($"{Dashes}{sample.Key}{Dashes}");
+                sample.Value();
+            }
         }
     }
 }

@@ -6,6 +6,6 @@
 
     class Program
     {
-        static void Main(string[] args) => TryOrFailFast(RunMath);
+        static void Main(string[] args) => TryOrFailFast(Run);
     }
 }
