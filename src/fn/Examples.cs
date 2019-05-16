@@ -60,7 +60,7 @@ namespace fn
 
         private static void GetOperationsFor(string message, int from, int to)
         {
-            WriteLine();
+            WriteLine($"{Dashes}{message}{Dashes}");
 
             foreach (var operation in Operations.Skip(from).Take(to))
                 WriteLine(operation);
