@@ -18,8 +18,7 @@ namespace fn
 
         internal static class Separators
         {
-            internal static readonly string Dashes = new string('-', 70);
-            internal static readonly string Underscores = new string('_', 70);
+            internal static readonly string Dashes = new string('-', 40);
         } 
     }
 }
