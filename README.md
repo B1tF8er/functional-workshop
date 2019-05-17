@@ -239,9 +239,12 @@ internal class TestLazyExecution
     private static void LazinessWithFunctions()
     {
         var random = new Random();
-        Func<int> leftExpression = () => 23;
-        Func<int> rightExpression = () => 42;
-        Func<int> lazyExecuted = () => random.NextDouble() < 0.5 ? leftExpression() : rightExpression();
+        Func<bool> isLessThanZeroPointFive = () => random.NextDouble() < 0.5;
+        Func<int> left = () => 23;
+        Func<int> right = () => 42;
+        Func<int> lazyExecuted = () => isLessThanZeroPointFive()
+            ? left()
+            : right();
 
         // all the previous code is evaluated
         // until we call lazyExecuted function
