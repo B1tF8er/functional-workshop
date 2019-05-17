@@ -5,7 +5,7 @@ namespace fn
     using System.Linq;
     using static System.Console;
 
-    internal class TestLazyExecution
+    internal class TestLazyEvaluation
     {
         private static IEnumerable<int> Numbers
         {

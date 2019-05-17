@@ -204,14 +204,14 @@ internal class TestPartialApplication
 }
 ```
 
-### Lazy Execution / Deferred evaluation
+### Lazy Evaluation / Deferred Execution 
 ```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
 
-internal class TestLazyExecution
+internal class TestLazyEvaluation
 {
     private static IEnumerable<int> LazyNumbers
     {
