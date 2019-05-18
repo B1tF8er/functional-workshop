@@ -45,6 +45,7 @@ namespace fn
             { " Curried Functions   ", TestCurriedFunctions.Run },
             { " Partial Application ", TestPartialApplication.Run },
             { " Lazy Evaluation     ", TestLazyEvaluation.Run },
+            { " Extension Methods   ", TestExtensionMethods.Run }
         };
 
         internal static void Run()
