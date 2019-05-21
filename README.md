@@ -331,8 +331,7 @@ internal class TestSmartConstructors
         }
         catch (ArgumentNullException ex)
         {
-            WriteLine(ex);
-            WriteLine("Name was `null` so the smart constructor of person threw an exception");
+            WriteLine($"{ex.Message}");
         }
     }
 
@@ -344,8 +343,7 @@ internal class TestSmartConstructors
         }
         catch (ArgumentOutOfRangeException ex)
         {
-            WriteLine(ex);
-            WriteLine("Age was `not in range` so the smart constructor of person threw an exception");
+            WriteLine($"{ex.Message}");
         }
     }
 }
@@ -366,14 +364,18 @@ internal class SmartPerson
 
     private void GuardName(string name)
     {
-        if (name is null)
-            throw new ArgumentNullException(nameof(name));
+        Func<bool> isNull = () => name is null;
+        Func<bool> isEmpty = () => string.IsNullOrEmpty(name);
+        Func<bool> isWhiteSpace = () => string.IsNullOrWhiteSpace(name);
+
+        if (isNull() || isEmpty() || isWhiteSpace())
+            throw new ArgumentNullException(nameof(name), "Name cannot be null, empty or white spaces");
     }
 
     private void GuardAge(int age)
     {
         if (age < 0 || age > 120)
-            throw new ArgumentOutOfRangeException(nameof(age));
+            throw new ArgumentOutOfRangeException(nameof(age), "Age is not in valid range");
     }
 
     public override string ToString() => $"My name is {Name} and I am {Age} years old";
