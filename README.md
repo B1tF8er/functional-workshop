@@ -461,6 +461,8 @@ internal static class TestAvoidPrimitiveObsession
 
         public static implicit operator string(Email email) => email.value;
 
+        public static implicit operator Email(string email) => Create(email);
+
         public override bool Equals(object obj)
         {
             var email = obj as Email;
