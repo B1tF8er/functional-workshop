@@ -39,14 +39,15 @@ namespace fn
 
         private static IDictionary<string, Action> Samples = new Dictionary<string, Action>()
         {
-            { " Delegates           ", TestDelegates.Run },
-            { " Actions             ", TestActions.Run },
-            { " Funcs               ", TestFuncs.Run },
-            { " Curried Functions   ", TestCurriedFunctions.Run },
-            { " Partial Application ", TestPartialApplication.Run },
-            { " Lazy Evaluation     ", TestLazyEvaluation.Run },
-            { " Extension Methods   ", TestExtensionMethods.Run },
-            { " Smart Constructors  ", TestSmartConstructors.Run }
+            { " Delegates                  ", TestDelegates.Run },
+            { " Actions                    ", TestActions.Run },
+            { " Funcs                      ", TestFuncs.Run },
+            { " Curried Functions          ", TestCurriedFunctions.Run },
+            { " Partial Application        ", TestPartialApplication.Run },
+            { " Lazy Evaluation            ", TestLazyEvaluation.Run },
+            { " Extension Methods          ", TestExtensionMethods.Run },
+            { " Smart Constructors         ", TestSmartConstructors.Run },
+            { " Avoid Primitive Obsession  ", TestAvoidPrimitiveObsession.Run },
         };
 
         internal static void Run()
