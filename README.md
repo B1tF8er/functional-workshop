@@ -9,7 +9,7 @@ dotnet run -p src/fn -c Release
 ### How to build and run using `docker cli`
 ```
 # build image and tag it
-docker build -t fn-image .
+docker build -t fn-image src/fn
 # run image using tag ^^
 docker run --rm fn-image
 ```
