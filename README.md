@@ -369,7 +369,7 @@ internal class SmartPerson
         Func<bool> isWhiteSpace = () => string.IsNullOrWhiteSpace(name);
 
         if (isNull() || isEmpty() || isWhiteSpace())
-            throw new ArgumentNullException(nameof(name), "Name cannot be null, empty or white spaces");
+            throw new ArgumentNullException(nameof(name), "Name can't be null, empty or white spaces");
     }
 
     private void GuardAge(int age)
