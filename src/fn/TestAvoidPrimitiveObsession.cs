@@ -18,9 +18,9 @@ namespace fn
             var emailOne = Email.Create("test1@test.com");
             var emailTwo = Email.Create("test2@test.com");
             var emailThree = Email.Create("test1@test.com");
-            WriteLine(emailOne);
-            WriteLine(emailTwo);
-            WriteLine(emailThree);
+            string fromEmail = Email.Create("test3@test.com");
+            Email fromlString = "test4@test.com";
+
             WriteLine($"{emailOne} == {emailTwo} ? {(emailOne.Equals(emailTwo))}");
             WriteLine($"{emailOne} == {emailThree} ? {(emailOne.Equals(emailThree))}");
         }
@@ -76,6 +76,7 @@ namespace fn
             }
 
             public static implicit operator string(Email email) => email.value;
+            public static implicit operator Email(string email) => Create(email);
 
             public override bool Equals(object obj)
             {
