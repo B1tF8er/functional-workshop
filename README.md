@@ -204,7 +204,7 @@ internal class TestPartialApplication
 }
 ```
 
-### Lazy Evaluation / Deferred Execution 
+## Lazy Evaluation / Deferred Execution 
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -264,7 +264,7 @@ internal class TestLazyEvaluation
 }
 ```
 
-### Extension Methods
+## Extension Methods
 ```csharp
 using System;
 using static System.Console;
@@ -303,7 +303,7 @@ internal static class PersonExtensions
 }
 ```
 
-### Smart Constructors
+## Smart Constructors
 ```csharp
 using System;
 using static System.Console;
@@ -382,7 +382,7 @@ internal class SmartPerson
 }
 ```
 
-### Avoid Primitive Obsession
+## Avoid Primitive Obsession
 ```csharp
 using System;
 using System.Text.RegularExpressions;
