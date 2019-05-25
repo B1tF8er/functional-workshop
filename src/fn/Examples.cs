@@ -15,7 +15,7 @@ namespace fn
             { " Multiply  ", 0 },
             { " Divide    ", 3 },
             { " Substract ", 6 },
-            { " Add       ", 9 },
+            { " Add       ", 9 }
         };
 
         private static IEnumerable<int> Operations
