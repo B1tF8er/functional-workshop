@@ -411,7 +411,7 @@ internal static class TestAvoidPrimitiveObsession
         var emailTwo = Email.Create("test2@test.com");
         var emailThree = Email.Create("test1@test.com");
         string fromEmail = Email.Create("test3@test.com");
-        Email fromlString = "test4@test.com";
+        Email fromString = "test4@test.com";
 
         WriteLine($"{emailOne} == {emailTwo} ? {(emailOne.Equals(emailTwo))}");
         WriteLine($"{emailOne} == {emailThree} ? {(emailOne.Equals(emailThree))}");
