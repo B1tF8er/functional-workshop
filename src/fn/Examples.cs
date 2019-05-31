@@ -9,7 +9,6 @@ namespace fn
     {
         private static IDictionary<string, Action> Samples = new Dictionary<string, Action>()
         {
-            { " Math                       ", Math.Run },
             { " Delegates                  ", TestDelegates.Run },
             { " Actions                    ", TestActions.Run },
             { " Funcs                      ", TestFuncs.Run },
@@ -20,6 +19,7 @@ namespace fn
             { " Smart Constructors         ", TestSmartConstructors.Run },
             { " Avoid Primitive Obsession  ", TestAvoidPrimitiveObsession.Run },
             { " Generics                   ", TestGenerics.Run },
+            { " Math                       ", Math.Run }
         };
 
         internal static void Run()
