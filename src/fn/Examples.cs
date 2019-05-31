@@ -19,6 +19,7 @@ namespace fn
             { " Extension Methods          ", TestExtensionMethods.Run },
             { " Smart Constructors         ", TestSmartConstructors.Run },
             { " Avoid Primitive Obsession  ", TestAvoidPrimitiveObsession.Run },
+            { " Generics                   ", TestGenerics.Run },
         };
 
         internal static void Run()
