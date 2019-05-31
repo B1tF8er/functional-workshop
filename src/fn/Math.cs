@@ -12,10 +12,10 @@ namespace fn
     {
         private static IDictionary<string, int> MathOperations = new Dictionary<string, int>()
         {
-            { " Multiply  ", Zero },
-            { " Divide    ", Three },
-            { " Substract ", Six },
-            { " Add       ", Nine }
+            { " Multiply                   ", Zero },
+            { " Divide                     ", Three },
+            { " Substract                  ", Six },
+            { " Add                        ", Nine }
         };
 
         private static IEnumerable<int> Operations
