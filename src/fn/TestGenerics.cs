@@ -12,20 +12,20 @@ namespace fn
         {
             new List<object>
             {
-                new Generic<int>(42),
-                new Generic<long>(42L),
-                new Generic<float>(42.5F),
-                new Generic<double>(42D),
-                new Generic<decimal>(42.5M),
-                new Generic<bool>(false),
-                new Generic<DateTime>(DateTime.Now),
-                new Generic<byte>(0x0042),
-                new Generic<char>('A'),
-                new Generic<string>("George"),
-                new Generic<Func<int, int>>(x => x + x),
-                new Generic<Action<int, int>>((x, y) => WriteLine(x + y)),
-                new Generic<dynamic>(7.5F + 35L),
-                new Generic<object>(new { a = 42 })
+                Generic<int>.Create(42),
+                Generic<long>.Create(42L),
+                Generic<float>.Create(42.5F),
+                Generic<double>.Create(42D),
+                Generic<decimal>.Create(42.5M),
+                Generic<bool>.Create(false),
+                Generic<DateTime>.Create(DateTime.Now),
+                Generic<byte>.Create(0x0042),
+                Generic<char>.Create('A'),
+                Generic<string>.Create("George"),
+                Generic<Func<int, int>>.Create(x => x + x),
+                Generic<Action<int, int>>.Create((x, y) => WriteLine(x + y)),
+                Generic<dynamic>.Create(7.5F + 35L),
+                Generic<object>.Create(new { a = 42 })
             }
             .ForEach(WriteLine);
         }
@@ -34,7 +34,9 @@ namespace fn
         {
             private T GenericReadOnlyProperty { get; }
 
-            internal Generic(T genericType) => GenericReadOnlyProperty = genericType;
+            private Generic(T genericArgument) => GenericReadOnlyProperty = genericArgument;
+
+            internal static Generic<T> Create(T genericValue) => new Generic<T>(genericValue);
 
             public override string ToString() => $"{GenericReadOnlyProperty} - {typeof(T)}";
         }
