@@ -543,7 +543,7 @@ internal static class TestAvoidPrimitiveObsession
 }
 ``` 
 
-### Generics
+## Generics
 ```csharp
 using System;
 using System.Collections.Generic;
