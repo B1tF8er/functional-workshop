@@ -620,3 +620,7 @@ internal static class TestGenerics
 9. Avoid primitive obsession
     - https://refactoring.guru/smells/primitive-obsession
     - https://enterprisecraftsmanship.com/2015/03/07/functional-c-primitive-obsession/
+10. Generics
+    - https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/
+    - https://www.tutorialsteacher.com/csharp/csharp-generics
+    - https://www.geeksforgeeks.org/c-sharp-generics-introduction/
