@@ -193,7 +193,7 @@ internal class TestPartialApplication
 }
 ```
 
-## Lazy Evaluation / Deferred Execution 
+## Lazy Evaluation / Deferred Execution
 ```csharp
 using System;
 using System.Collections.Generic;
