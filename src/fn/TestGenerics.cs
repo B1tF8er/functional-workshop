@@ -30,7 +30,7 @@ namespace fn
             .ForEach(WriteLine);
         }
 
-        internal class Generic<T>
+        private class Generic<T>
         {
             private T GenericReadOnlyProperty { get; }
 

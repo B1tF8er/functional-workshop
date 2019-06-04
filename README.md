@@ -575,7 +575,7 @@ internal static class TestGenerics
         .ForEach(WriteLine);      
     }
 
-    internal class Generic<T>
+    private class Generic<T>
     {
         private T GenericReadOnlyProperty { get; }
 
