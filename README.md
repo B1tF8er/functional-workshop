@@ -4,27 +4,33 @@
 See the [scripts](https://github.com/B1tF8er/functional-workshop/tree/master/scripts)
 
 ## Arrow notation
-Arrow notations, this is right assosiative
-(int) -> ((int) -> (int)) `EQUALS` int -> int -> int
+Arrow notations are the preferred syntax to read the functions signatures
+in Functional Programming lingo and they are right associative:
+
+`(int) -> ((int) -> (int))` *EQUALS* `int -> int -> int`
 
 That can be read as a function that takes 2 integers as arguments
-and returns another integer in C# we have three ways to create that
-e.g :
+and returns another integer. In C# we have three ways to create that
+e.g:
 
 `Delegates = private delegate int ExampleDelegate(int left, int right)`
 left and right are the first two ints in the signature
-and the return type is the third int
+and the return type is the third int.
 
 `Funcs = private Func<int, int, int> ExampleFunc`
 it can be read as in the example the first two are
-the arguments, and the last one is the return type
+the arguments, and the last one is the return type.
 
 `Actions = private Action<int, int, int> ExampleAction`
 are a special case, it is read as Funcs but
 they always return void, so this is read as a function
-that takes 3 ints as arguments and returns void
+that takes 3 ints as arguments and returns void.
 
 ## Delegates
+
+Delegates are the most basic form to use functions
+as first-class citizens in C#.
+
 ```csharp
 using System;
 using System.Diagnostics;
@@ -83,6 +89,11 @@ internal static class TestDelegates
 ```
 
 ## Actions
+
+Actions are an extension of the delegates that the .NET framework
+gives us. These never return a value are always `void`, and can
+take up to sixteen generic parameters as input.
+
 ```csharp
 using System;
 using System.Diagnostics;
@@ -108,6 +119,13 @@ internal static class TestActions
 ```
 
 ## Funcs
+
+Funcs are another extension of the delegates that the .NET framework
+gives us. But these do have a `generic` return type, and can
+take up to sixteen generic parameters as input. The key difference
+between `Actions` and `Funcs` is that the last parameter of a `Func` is
+the return type.
+
 ```csharp
 using System;
 using System.Diagnostics;
@@ -141,6 +159,22 @@ internal static class TestFuncs
 ```
 
 ## Curried Functions
+
+Named after mathematician Haskell Curry, currying is the process of transforming
+an n-ary function f that takes arguments t1, t2, ..., tn
+into a unary function that takes t1 and yields a new function that takes t2,
+and so on, ultimately returning the same result as f once the arguments
+have all been given. In other words, an n-ary function with signature 
+
+`(T1, T2, ..., Tn) → R`
+
+when curried, has signature
+
+`(T1) (T2) ... (Tn) → R `
+
+By itself this technique is pretty useless, but it does enable the use
+of partial application.
+
 ```csharp
 using System;
 using static System.Console;
@@ -162,6 +196,14 @@ internal class TestCurriedFunctions
 ```
 
 ## Partial Application
+
+Providing a function with fewer arguments than it expects is called
+Partial Application of functions. In order to produce more reusable functions
+and create better abstractions we need a mechanism
+to preset some of the arguments of a function. Partial application is the technique
+used to transform functions of higher arity (functions that take multiple arguments)
+into multiple functions that take less arguments.
+
 ```csharp
 using System;
 using static System.Console;
@@ -194,6 +236,11 @@ internal class TestPartialApplication
 ```
 
 ## Lazy Evaluation / Deferred Execution
+
+Laziness in computing means deferring a computation until
+its result is needed. This is beneficial when the computation
+is expensive and its result may not be needed.
+
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -254,6 +301,15 @@ internal class TestLazyEvaluation
 ```
 
 ## Extension Methods
+
+Extension methods enable you to "add" methods to existing types
+without creating a new derived type, recompiling, or otherwise
+modifying the original type.
+
+- They are just static methods in a static class
+- Enable Open/Close principle
+- Enable method chaining
+
 ```csharp
 using System;
 using static System.Console;
@@ -293,6 +349,13 @@ internal static class PersonExtensions
 ```
 
 ## Smart Constructors
+
+Smart constructors are just functions that build values
+of the required type, but perform some extra checks
+when the value is constructed. In this case it is a
+good practice to set the constructor of a Reference Type
+as private and expose a function to allow its instantiation.
+
 ```csharp
 using System;
 using static System.Console;
@@ -377,6 +440,19 @@ internal class SmartPerson
 ```
 
 ## Avoid Primitive Obsession
+
+Primitive obsession is the use of base types like:
+`string, int, bool, double, datetime` etc;
+to represent complex types like a person's Age, Name, Email.
+
+To avoid this we should create small objects to
+represent them and some of the benefits we get from that are:
+
+- Validation in one single place (the small class smart constructor)
+- Immutability
+- Self Validation
+- Value Equality
+
 ```csharp
 using System;
 using System.Text.RegularExpressions;
@@ -544,6 +620,16 @@ internal static class TestAvoidPrimitiveObsession
 ``` 
 
 ## Generics
+
+A generic allows you to define a class with placeholders
+for the type of its fields, methods, parameters, etc.
+Generics replace these placeholders with some specific
+type at compile time.
+
+- Used to maximize code reuse, type safety, and performance
+- Its most common use is to create collection classes
+- Constraints work to limit the scope of the types
+
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -589,6 +675,7 @@ internal static class TestGenerics
 ```
 
 ## Useful links
+
 1. Delegates
     - https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/delegate
     - https://www.geeksforgeeks.org/c-sharp-delegates/
