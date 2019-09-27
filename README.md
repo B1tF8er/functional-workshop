@@ -1,9 +1,11 @@
-# Functional concepts applied using C#
+# Functional concepts applied using C# #
 
-### How to build and run
+## How to build and run ##
+
 See the [scripts](https://github.com/B1tF8er/functional-workshop/tree/master/scripts)
 
-## Arrow notation
+## Arrow notation ##
+
 Arrow notations are the preferred syntax to read the signature of a function
 in Functional Programming lingo and they are right associative:
 
@@ -26,7 +28,7 @@ are a special case, it is read as Funcs but
 they always return void, so this is read as a function
 that takes 3 ints as arguments and returns void.
 
-## Delegates
+## Delegates ##
 
 Delegates are the most basic form to use functions
 as first-class citizens in C#.
@@ -88,7 +90,7 @@ internal static class TestDelegates
 }
 ```
 
-## Actions
+## Actions ##
 
 Actions are an extension of the delegates that the .NET framework
 gives us. These never return a value therefore are always `void`, and can
@@ -118,7 +120,7 @@ internal static class TestActions
 }
 ```
 
-## Funcs
+## Funcs ##
 
 Funcs are another extension of the delegates that the .NET framework
 gives us. But these do have a `generic` return type, and can
@@ -158,19 +160,19 @@ internal static class TestFuncs
 }
 ```
 
-## Curried Functions
+## Curried Functions ##
 
 Named after mathematician Haskell Curry, currying is the process of transforming
 an n-ary function f that takes arguments t1, t2, ..., tn
 into a unary function that takes t1 and yields a new function that takes t2,
 and so on, ultimately returning the same result as f once the arguments
-have all been given. In other words, an n-ary function with signature 
+have all been given. In other words, an n-ary function with signature
 
 `(T1, T2, ..., Tn) → R`
 
 when curried, has signature
 
-`(T1) (T2) ... (Tn) → R `
+`(T1) (T2) ... (Tn) → R`
 
 By itself this technique is pretty useless, but it does enable the use
 of partial application.
@@ -178,7 +180,7 @@ of partial application.
 ```csharp
 using System;
 using static System.Console;
-					
+
 internal class TestCurriedFunctions
 {
     internal static void Run()
@@ -191,11 +193,11 @@ internal class TestCurriedFunctions
         (firstName) => (lastName) => $"{firstName} {lastName}";
 
     private static Func<int, Func<int, int>> Sum =>
-        (lhs) => (rhs) => lhs + rhs; 
+        (lhs) => (rhs) => lhs + rhs;
 }
 ```
 
-## Partial Application
+## Partial Application ##
 
 Providing a function with fewer arguments than it expects is called
 Partial Application of functions. In order to produce more reusable functions
@@ -207,7 +209,7 @@ into multiple functions that take less arguments.
 ```csharp
 using System;
 using static System.Console;
-					
+
 internal class TestPartialApplication
 {
     internal static void Run()
@@ -228,14 +230,14 @@ internal class TestPartialApplication
         (lastName) => Greeter("Ms.")(lastName);
 
     private static Func<int, Func<int, int>> Sum =>
-        (lhs) => (rhs) => lhs + rhs; 
+        (lhs) => (rhs) => lhs + rhs;
 
     private static Func<int, int> PlusFive =>
         (factor) => Sum(factor)(5);
 }
 ```
 
-## Lazy Evaluation / Deferred Execution
+## Lazy Evaluation / Deferred Execution ##
 
 Laziness in computing means deferring a computation until
 its result is needed. This is beneficial when the computation
@@ -264,7 +266,7 @@ internal class TestLazyEvaluation
             yield return 9;
             yield return 10;
         }
-    } 
+    }
 
     internal static void Run()
     {
@@ -300,7 +302,7 @@ internal class TestLazyEvaluation
 }
 ```
 
-## Extension Methods
+## Extension Methods ##
 
 Extension methods enable you to "add" methods to existing types
 without creating a new derived type, recompiling, or otherwise
@@ -348,7 +350,7 @@ internal static class PersonExtensions
 }
 ```
 
-## Smart Constructors
+## Smart Constructors ##
 
 Smart constructors are just functions that build values
 of the required type, but perform some extra checks
@@ -439,7 +441,7 @@ internal class SmartPerson
 }
 ```
 
-## Avoid Primitive Obsession
+## Avoid Primitive Obsession ##
 
 Primitive obsession is the use of base types like:
 `string, int, bool, double, datetime` etc;
@@ -617,9 +619,9 @@ internal static class TestAvoidPrimitiveObsession
         internal static string EmailPattern => @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
     }
 }
-``` 
+```
 
-## Generics
+## Generics ##
 
 A generic allows you to define a class with placeholders
 for the type of its fields, methods, parameters, etc.
@@ -658,7 +660,7 @@ internal static class TestGenerics
             Generic<dynamic>.Create(7.5F + 35L),
             Generic<object>.Create(new { a = 42 })
         }
-        .ForEach(WriteLine);      
+        .ForEach(WriteLine);
     }
 
     private class Generic<T>
@@ -674,40 +676,40 @@ internal static class TestGenerics
 }
 ```
 
-## Useful links
+## Useful links ##
 
 1. Delegates
-    - https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/delegate
-    - https://www.geeksforgeeks.org/c-sharp-delegates/
-    - https://www.tutorialspoint.com/csharp/csharp_delegates.htm
+    - <https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/delegate>
+    - <https://www.geeksforgeeks.org/c-sharp-delegates/>
+    - <https://www.tutorialspoint.com/csharp/csharp_delegates.htm>
 2. Funcs
-    - https://docs.microsoft.com/en-us/dotnet/api/system.func-1?view=netframework-4.8
-    - https://www.geeksforgeeks.org/c-sharp-func-delegate/
+    - <https://docs.microsoft.com/en-us/dotnet/api/system.func-1?view=netframework-4.8>
+    - <https://www.geeksforgeeks.org/c-sharp-func-delegate/>
 3. Actions
-    - https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.8
-    - https://www.geeksforgeeks.org/c-sharp-action-delegate/
+    - <https://docs.microsoft.com/en-us/dotnet/api/system.action?view=netframework-4.8>
+    - <https://www.geeksforgeeks.org/c-sharp-action-delegate/>
 4. Curried Functions
-    - https://codeblog.jonskeet.uk/2012/01/30/currying-vs-partial-function-application/
-    - https://www.geeksforgeeks.org/higher-order-functions-currying/
-    - https://weblogs.asp.net/dixin/functional-csharp-higher-order-function-currying-and-first-class-function
+    - <https://codeblog.jonskeet.uk/2012/01/30/currying-vs-partial-function-application/>
+    - <https://www.geeksforgeeks.org/higher-order-functions-currying/>
+    - <https://weblogs.asp.net/dixin/functional-csharp-higher-order-function-currying-and-first-class-function>
 5. Partial Application
-    - https://marcclifton.wordpress.com/2017/06/23/partial-application-and-currying-in-c-clearing-the-fog/
-    - http://mikehadlow.blogspot.com/2015/09/partial-application-in-c.html
+    - <https://marcclifton.wordpress.com/2017/06/23/partial-application-and-currying-in-c-clearing-the-fog/>
+    - <http://mikehadlow.blogspot.com/2015/09/partial-application-in-c.html>
 6. Lazy Evaluation / Deferred Execution
-    - https://blogs.msdn.microsoft.com/pedram/2007/06/02/lazy-evaluation-in-c/
-    - https://zohaib.me/lazy-evaluation-in-c/
-    - https://xosfaere.wordpress.com/2010/03/21/lazy-evaluation-in-csharp/
+    - <https://blogs.msdn.microsoft.com/pedram/2007/06/02/lazy-evaluation-in-c/>
+    - <https://zohaib.me/lazy-evaluation-in-c/>
+    - <https://xosfaere.wordpress.com/2010/03/21/lazy-evaluation-in-csharp/>
 7. Extension Methods
-    - https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods
-    - https://www.geeksforgeeks.org/extension-method-in-c-sharp/
+    - <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods>
+    - <https://www.geeksforgeeks.org/extension-method-in-c-sharp/>
 8. Smart Constructors
-    - https://davemateer.com/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either
-    - https://markkarpov.com/post/smart-constructors-that-cannot-fail.html
-    - https://news.ycombinator.com/item?id=10295487
+    - <https://davemateer.com/2019/03/12/Functional-Programming-in-C-Sharp-Expressions-Options-Either>
+    - <https://markkarpov.com/post/smart-constructors-that-cannot-fail.html>
+    - <https://news.ycombinator.com/item?id=10295487>
 9. Avoid primitive obsession
-    - https://refactoring.guru/smells/primitive-obsession
-    - https://enterprisecraftsmanship.com/2015/03/07/functional-c-primitive-obsession/
+    - <https://refactoring.guru/smells/primitive-obsession>
+    - <https://enterprisecraftsmanship.com/2015/03/07/functional-c-primitive-obsession/>
 10. Generics
-    - https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/
-    - https://www.tutorialsteacher.com/csharp/csharp-generics
-    - https://www.geeksforgeeks.org/c-sharp-generics-introduction/
+    - <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/>
+    - <https://www.tutorialsteacher.com/csharp/csharp-generics>
+    - <https://www.geeksforgeeks.org/c-sharp-generics-introduction/>
