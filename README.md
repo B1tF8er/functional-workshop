@@ -678,12 +678,13 @@ internal static class TestGenerics
 
 ## LINQ ##
 
-LINQ stands for Language INtegrated Query. It is a functional library
-and offers implementations many common operations on lists
-(or, more generally, on “sequences,” as instances of IEnumerable should technically be called),
+LINQ stands for `L`anguage `IN`tegrated `Q`uery. It is a functional library
+and offers implementations for many common operations on lists
+or, more generally, on “sequences,” as instances of IEnumerable should technically be called,
 the most common of which are mapping, sorting, and filtering
 
 - Makes extensive use of higher-order functions as arguments
+- Uses Higher Order Functions (HOF)
 - Uses method syntax or query syntax
 
 ```csharp
