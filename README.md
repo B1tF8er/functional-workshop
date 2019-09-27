@@ -4,10 +4,10 @@
 See the [scripts](https://github.com/B1tF8er/functional-workshop/tree/master/scripts)
 
 ## Arrow notation
-Arrow notations are the preferred syntax to read the functions signatures
+Arrow notations are the preferred syntax to read the signature of a function
 in Functional Programming lingo and they are right associative:
 
-`(int) -> ((int) -> (int))` *EQUALS* `int -> int -> int`
+`(int) -> ((int) -> (int))` **EQUALS** `int -> int -> int`
 
 That can be read as a function that takes 2 integers as arguments
 and returns another integer. In C# we have three ways to create that
@@ -91,7 +91,7 @@ internal static class TestDelegates
 ## Actions
 
 Actions are an extension of the delegates that the .NET framework
-gives us. These never return a value are always `void`, and can
+gives us. These never return a value therefore are always `void`, and can
 take up to sixteen generic parameters as input.
 
 ```csharp
