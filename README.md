@@ -872,3 +872,7 @@ internal static class TestLINQ
     - <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/>
     - <https://www.tutorialsteacher.com/csharp/csharp-generics>
     - <https://www.geeksforgeeks.org/c-sharp-generics-introduction/>
+11. LINQ
+    - <https://www.tutorialspoint.com/linq/linq_overview.htm>
+    - <https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/>
+    - <https://code.msdn.microsoft.com/101-LINQ-Samples-3fb9811b>
