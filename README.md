@@ -684,7 +684,6 @@ or, more generally, on “sequences,” as instances of IEnumerable should techn
 the most common of which are mapping, sorting, and filtering
 
 - Makes extensive use of higher-order functions as arguments
-- Uses Higher Order Functions (HOF)
 - Uses method syntax or query syntax
 
 ```csharp
