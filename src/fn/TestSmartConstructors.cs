@@ -64,11 +64,7 @@ namespace fn
 
         private static void GuardName(string name)
         {
-            Func<bool> isNull = () => name is null;
-            Func<bool> isEmpty = () => string.IsNullOrEmpty(name);
-            Func<bool> isWhiteSpace = () => string.IsNullOrWhiteSpace(name);
-
-            if (isNull() || isEmpty() || isWhiteSpace())
+            if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentNullException(nameof(name), "Name can't be null, empty or white spaces");
         }
 

@@ -6,7 +6,11 @@ namespace fn
 
     internal static class TestGenerics
     {
-        internal static void Run() => CreateGenerics();
+        internal static void Run()
+        {
+            CreateGenerics();
+            CreateGenericsWithConstraints();
+        }
 
         private static void CreateGenerics()
         {
@@ -30,6 +34,23 @@ namespace fn
             .ForEach(WriteLine);
         }
 
+        private static void CreateGenericsWithConstraints()
+        {
+            new List<object>
+            {
+                GenericWithConstraints<int, object>.Create(42, new { A = 42 }),
+                GenericWithConstraints<long, object>.Create(42L, new { B = 42L }),
+                GenericWithConstraints<float, object>.Create(42F, new { C = 42F }),
+                GenericWithConstraints<double, object>.Create(42D, new { D = 42D }),
+                GenericWithConstraints<decimal, object>.Create(42M, new { E = 42M }),
+                GenericWithConstraints<bool, object>.Create(true, new { F = true }),
+                GenericWithConstraints<DateTime, object>.Create(DateTime.Now, new { G = DateTime.Now }),
+                GenericWithConstraints<byte, object>.Create(0x0042, new { H = 0x0042 }),
+                GenericWithConstraints<char, object>.Create('J', new { I = 'J' })
+            }
+            .ForEach(WriteLine);
+        }
+
         private class Generic<T>
         {
             private T GenericReadOnlyProperty { get; }
@@ -39,6 +60,21 @@ namespace fn
             internal static Generic<T> Create(T genericValue) => new Generic<T>(genericValue);
 
             public override string ToString() => $"{GenericReadOnlyProperty} - {typeof(T)}";
+        }
+
+        private class GenericWithConstraints<T, U>
+            where T : struct
+            where U : new()
+        {
+            private T @Struct { get; }
+
+            private U @Object { get; }
+
+            private GenericWithConstraints(T @struct, U @object) => (@Struct, @Object) = (@struct, @object);
+
+            internal static GenericWithConstraints<T, U> Create(T @struct, U @object) => new GenericWithConstraints<T, U>(@struct, @object);
+
+            public override string ToString() => $"{@Struct} - {typeof(T)} && {@Object} - {typeof(U)} ";
         }
     }
 }

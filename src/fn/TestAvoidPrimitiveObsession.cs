@@ -21,6 +21,8 @@ namespace fn
             var emailOne = Email.Create("test1@test.com");
             var emailTwo = Email.Create("test2@test.com");
             var emailThree = Email.Create("test1@test.com");
+
+            // Implicit conversion using operators
             string fromEmail = Email.Create("test3@test.com");
             Email fromString = "test4@test.com";
 
@@ -57,6 +59,8 @@ namespace fn
             var ageOne = Age.Create(30);
             var ageTwo =  Age.Create(25);
             var ageThree = Age.Create(30);
+
+            // Implicit conversion using operators
             int fromAge = Age.Create(20);
             Age fromInt = 30;
 
