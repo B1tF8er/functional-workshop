@@ -703,11 +703,14 @@ internal static class TestGenerics
 
         private U @Object { get; }
 
-        private GenericWithConstraints(T @struct, U @object) => (@Struct, @Object) = (@struct, @object);
+        private GenericWithConstraints(T @struct, U @object) =>
+            (@Struct, @Object) = (@struct, @object);
 
-        internal static GenericWithConstraints<T, U> Create(T @struct, U @object) => new GenericWithConstraints<T, U>(@struct, @object);
+        internal static GenericWithConstraints<T, U> Create(T @struct, U @object) =>
+            new GenericWithConstraints<T, U>(@struct, @object);
 
-        public override string ToString() => $"{@Struct} - {typeof(T)} && {@Object} - {typeof(U)} ";
+        public override string ToString() =>
+            $"{@Struct} - {typeof(T)} && {@Object} - {typeof(U)} ";
     }
 }
 ```
