@@ -48,11 +48,8 @@ namespace fn
         internal string Name { get; }
         internal int Age { get; }
 
-        private SmartPerson(string name, int age)
-        {
-            Name = name;
-            Age = age;
-        }
+        private SmartPerson(string name, int age) =>
+            (Name, Age) = (name, age);
 
         internal static SmartPerson Create(string name, int age)
         {

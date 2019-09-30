@@ -19,14 +19,106 @@ e.g:
 left and right are the first two ints in the signature
 and the return type is the third int.
 
+```csharp
+using System;
+
+public class TestDelegates
+{
+    // int -> int -> int
+    public delegate int MyFirstSumDelegate(int x, int y);
+
+    // int -> int -> int -> ()
+    public delegate void MySecondSumDelegate(int x, int y, int z);
+
+    public static void Main()
+    {
+        MyFirstSumDelegate myFirstSumDelegate = SumTwo;
+
+        var delegateResult = myFirstSumDelegate(1, 2);
+
+        Console.WriteLine(delegateResult);
+
+        MySecondSumDelegate mySecondSumDelegate = SumThree;
+        mySecondSumDelegate(1, 2, 3);
+    }
+
+    public static int SumTwo(int a, int b)
+    {
+        return a + b;
+    }
+
+    public static void SumThree(int a, int b, int c)
+    {
+        var result = a + b + c;
+
+        Console.WriteLine(result);
+    }
+}
+```
+
 `Funcs = private Func<int, int, int> ExampleFunc`
-it can be read as in the example the first two are
-the arguments, and the last one is the return type.
+it can be read as in the example the first two ints
+are the arguments, and the last one is the return type.
+
+```csharp
+using System;
+
+public class TestFuncs
+{
+    // int -> int -> int
+    public delegate int MySumDelegate(int x, int y);
+
+    public static void Main()
+    {
+        MySumDelegate mySumDelegate = Sum;
+        // int -> int -> int
+        Func<int, int, int> mySumFunc = Sum;
+
+        var delegateResult = mySumDelegate(1, 2);
+        var funcResult = mySumFunc(1, 2);
+
+        Console.WriteLine(delegateResult);
+        Console.WriteLine(funcResult);
+    }
+
+    public static int Sum(int a, int b)
+    {
+        return a + b;
+    }
+}
+```
 
 `Actions = private Action<int, int, int> ExampleAction`
 are a special case, it is read as Funcs but
 they always return void, so this is read as a function
 that takes 3 ints as arguments and returns void.
+
+```csharp
+using System;
+
+public class TestActions
+{
+    // int -> int -> int -> ()
+    public delegate void MySumDelegate(int x, int y, int z);
+
+    public static void Main()
+    {
+        MySumDelegate mySumDelegate = Sum;
+        // int -> int -> int -> ()
+        Action<int, int, int> mySumAction = Sum;
+
+        mySumDelegate(1, 2, 3);
+        mySumAction(1, 2, 3);
+    }
+
+    public static void Sum(int a, int b, int c)
+    {
+        var result = a + b + c;
+
+        Console.WriteLine(result);
+    }
+}
+```
 
 ## Delegates ##
 
@@ -92,9 +184,12 @@ internal static class TestDelegates
 
 ## Actions ##
 
-Actions are an extension of the delegates that the .NET framework
+Actions are sugar syntax to create delegates that the .NET framework
 gives us. These never return a value therefore are always `void`, and can
 take up to sixteen generic parameters as input.
+
+- The `void` return type in FP is called `unit`
+- `unit` is expressed as `()` in arrow notation
 
 ```csharp
 using System;
@@ -122,7 +217,7 @@ internal static class TestActions
 
 ## Funcs ##
 
-Funcs are another extension of the delegates that the .NET framework
+Funcs are another sugar syntax to create delegates that the .NET framework
 gives us. But these do have a `generic` return type, and can
 take up to sixteen generic parameters as input. The key difference
 between `Actions` and `Funcs` is that the last parameter of a `Func` is
@@ -407,11 +502,8 @@ internal class SmartPerson
     internal string Name { get; }
     internal int Age { get; }
 
-    private SmartPerson(string name, int age)
-    {
-        Name = name;
-        Age = age;
-    }
+    private SmartPerson(string name, int age) =>
+        (Name, Age) = (name, age);
 
     internal static SmartPerson Create(string name, int age)
     {
