@@ -1,13 +1,34 @@
-### Make bash files linux executables
-`chmod u+x ./scripts/run-dotnet`
-`chmod u+x ./scripts/run-docker`
+# Make bash files linux executables #
 
-## Run using dotnet on linux/macos
-`./scripts/run-dotnet`
-## Run using dotnet on windows
-`./scripts/run-dotnet.ps1`
+```bash
+> chmod u+x ./scripts/run-dotnet
+> chmod u+x ./scripts/run-docker
+```
 
-## Run using docker on linux/macos
-`./scripts/run-docker`
-## Run using dotnet on windows
-`./scripts/run-docker.ps1`
+## dotnet ##
+
+### Run using dotnet on linux/macos ###
+
+```bash
+> ./scripts/run-dotnet
+```
+
+### Run using dotnet on windows ###
+
+```pwsh
+> ./scripts/run-dotnet.ps1
+```
+
+## docker ##
+
+### Run using docker on linux/macos ###
+
+```bash
+> ./scripts/run-docker
+```
+
+### Run using docker on windows ###
+
+```pwsh
+> ./scripts/run-docker.ps1
+```
