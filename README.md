@@ -148,7 +148,7 @@ public class TestFirstClassFunctions
     // Assigned to a variable
     private readonly static Adder adder = (x, y) => x + y;
 
-    public static void Main()
+    public static void Run()
     {
         // Stored in a collection
         var functions = new Dictionary<string, Adder>
@@ -183,28 +183,100 @@ public class TestHigherOrderFunctions
 {
     private readonly static Subtractor subtractor = (x, y) => x - y;
 
-    public static void Main() =>
+    public static void Run() =>
         WriteLine(Generator(subtractor)(44, 2));
 
     // This is a HOF
     // takes a functions as argument
     // and returns a function
-    public static Subtractor Generator(Subtractor subtractor)
+    private static Subtractor Generator(Subtractor subtractor)
         => subtractor;
 }
 ```
 
 ## Pure Functions ##
 
-// TODO: add pure funtions explanation
+It is said that a function is pure when its output
+depends entirely on the input parameters. And cause
+no side effects. Therefore they improve,
+
+- Testability
+- Correctness
+- Readibility
+
+With no side effects there are no surprises. our code
+does what it says, no more. and the cognitive load
+to understand the code is less
+
+```csharp
+using static System.Console;
+
+public class TestPureFunctions
+{
+    public static void Run()
+    {
+        var ab = Join("a", "b");
+        var abab = Join(ab, ab);
+
+        WriteLine(ab);
+        WriteLine(abab);
+    }
+
+    private static string Join(string lhs, string rhs)
+        => $"{lhs}{rhs}";
+}
+```
+
+## Side Effects ##
+
+To clarify this definition, we must define exactly
+what a side effect is. A function is said to have side effects
+if it does any of the following,
+
+- Mutates global state — “Global” here means any state
+    that’s visible outside of the function’s scope.
+    For example, a private instance field is considered global
+    because it’s visible from all methods within the class.
+- Mutates its input arguments
+- Throws exceptions
+- Performs any I/O operation — This includes any interaction
+    between the program and the external world,
+    including reading from or writing to the console,
+    the filesystem, or a database, and interacting with
+    any process outside the application’s boundary.
+
+```csharp
+using static System.Console;
+
+public class TestSideEffects
+{
+    public static void Run()
+    {
+        var ab = JoinWithLogs("a", "b");
+        var abab = JoinWithLogs(ab, ab);
+
+        WriteLine(ab);
+        WriteLine(abab);
+    }
+
+    private static string JoinWithLogs(string lhs, string rhs)
+    {
+        // Here we have the side effect of writing to console
+        // but it could be any I/O operation.
+        WriteLine($"lhs before: {lhs}");
+        WriteLine($"rhs before: {rhs}");
+
+        var result = $"{lhs}{rhs}";
+
+        WriteLine($"result: {result}");
+        return result;
+    }
+}
+```
 
 ## Immutability ##
 
 // TODO: add immutability explanation
-
-## Side Effects ##
-
-// TODO: add side effects explanation
 
 ## Arity of Functions ##
 
