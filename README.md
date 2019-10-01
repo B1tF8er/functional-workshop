@@ -1,10 +1,10 @@
-# Functional programming concepts applied using C# #
+# Functional Programming Concepts Applied Using C# #
 
-## How to build and run ##
+## How To Build And Run ##
 
 See the [scripts](https://github.com/B1tF8er/functional-workshop/tree/master/scripts)
 
-## Arrow notation ##
+## Arrow Notation ##
 
 Arrow notations are the preferred syntax to read the signature of a function
 in Functional Programming lingo and they are right associative:
