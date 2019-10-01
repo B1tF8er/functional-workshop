@@ -1,5 +1,11 @@
 # Functional Programming Concepts Applied Using C# #
 
+You have been curious about all the fuzz in the recent years
+about functional programming? but have not find how
+to apply it in your day to day work. Search no more.
+This post aims to give you a cheatsheet with functional concepts
+and thechniques used in the .NET framework.
+
 ## How To Build And Run ##
 
 See the [scripts](https://github.com/B1tF8er/functional-workshop/tree/master/scripts)
@@ -7,13 +13,12 @@ See the [scripts](https://github.com/B1tF8er/functional-workshop/tree/master/scr
 ## Arrow Notation ##
 
 Arrow notations are the preferred syntax to read the signature of a function
-in Functional Programming lingo and they are right associative:
+in Functional Programming lingo and they are right associative,
 
 `(int) -> ((int) -> (int))` **EQUALS** `int -> int -> int`
 
-That can be read as a function that takes 2 integers as arguments
-and returns another integer. In C# we have three ways to create that
-e.g:
+That can be read as a function that takes two integers as arguments
+and returns another integer. In C# we have three ways to create it,
 
 `Delegates = private delegate int ExampleDelegate(int left, int right)`
 left and right are the first two ints in the signature
@@ -57,8 +62,8 @@ public class TestDelegates
 ```
 
 `Funcs = private Func<int, int, int> ExampleFunc`
-it can be read as in the example the first two ints
-are the arguments, and the last one is the return type.
+it can be read as in the example, the first two ints
+are the arguments, and the last one, is the return type.
 
 ```csharp
 using System;
@@ -89,8 +94,8 @@ public class TestFuncs
 ```
 
 `Actions = private Action<int, int, int> ExampleAction`
-are a special case, it is read as Funcs but
-they always return void, so this is read as a function
+are a special case, they read as Funcs but
+they always return void. It is read as a function
 that takes 3 ints as arguments and returns void.
 
 ```csharp
@@ -119,6 +124,34 @@ public class TestActions
     }
 }
 ```
+
+## First Class Functions ##
+
+// TODO: add First class functions explanation
+
+## Higher Order Functions ##
+
+// TODO: add HOF explanation
+
+## Pure Functions ##
+
+// TODO: add pure funtions explanation
+
+## Immutability ##
+
+// TODO: add immutability explanation
+
+## Side Effects ##
+
+// TODO: add side effects explanation
+
+## Arity of Functions ##
+
+// TODO: add arity of functions explanation
+
+## Referential Transparency ##
+
+// TODO: add referential transparency explanation
 
 ## Delegates ##
 
@@ -220,8 +253,8 @@ internal static class TestActions
 Funcs are another sugar syntax to create delegates that the .NET framework
 gives us. But these do have a `generic` return type, and can
 take up to sixteen generic parameters as input. The key difference
-between `Actions` and `Funcs` is that the last parameter of a `Func` is
-the return type.
+between `Actions` and `Funcs` is that the last parameter of a `Func`
+which is the return type.
 
 ```csharp
 using System;
@@ -258,14 +291,14 @@ internal static class TestFuncs
 ## Curried Functions ##
 
 Named after mathematician Haskell Curry, currying is the process of transforming
-an n-ary function f that takes arguments t1, t2, ..., tn
-into a unary function that takes t1 and yields a new function that takes t2,
+an `n-ary` function f that takes arguments t1, t2, ..., tn
+into a `unary` function that takes t1 and yields a new function that takes t2,
 and so on, ultimately returning the same result as f once the arguments
 have all been given. In other words, an n-ary function with signature
 
 `(T1, T2, ..., Tn) → R`
 
-when curried, has signature
+when curried has signature
 
 `(T1) (T2) ... (Tn) → R`
 
@@ -404,7 +437,7 @@ without creating a new derived type, recompiling, or otherwise
 modifying the original type.
 
 - They are just static methods in a static class
-- Enable Open/Close principle
+- Enable the Open/Close principle
 - Enable method chaining
 
 ```csharp
@@ -448,7 +481,7 @@ internal static class PersonExtensions
 ## Smart Constructors ##
 
 Smart constructors are just functions that build values
-of the required type, but perform some extra checks
+of the required type. Yet perform some extra checks
 when the value is constructed. In this case it is a
 good practice to set the constructor of a Reference Type
 as private and expose a function to allow its instantiation.
@@ -532,15 +565,15 @@ internal class SmartPerson
 ## Avoid Primitive Obsession ##
 
 Primitive obsession is the use of base types like:
-`string, int, bool, double, datetime` etc;
-to represent complex types like a person's Age, Name, Email.
+`string, int, bool, double, datetime` etc
+to represent complex types like a person's Age, Name or Email.
 
 To avoid this we should create small objects to
-represent them and some of the benefits we get from that are:
+represent them and some of the benefits we get from that are,
 
 - Validation in one single place (the small class smart constructor)
 - Immutability
-- Self Validation
+- Self-Validation
 - Value Equality
 
 ```csharp
@@ -811,7 +844,7 @@ internal static class TestGenerics
 
 LINQ stands for `L`anguage `IN`tegrated `Q`uery. It is a functional library
 and offers implementations for many common operations on lists
-or, more generally, on “sequences,” as instances of IEnumerable should technically be called,
+or, more generally, on “sequences.” As instances of IEnumerable should technically be called,
 the most common of which are mapping, sorting, and filtering
 
 - Makes extensive use of higher-order functions as arguments
@@ -964,6 +997,10 @@ internal static class TestLINQ
     }
 }
 ```
+
+## Conslusion ##
+
+// TODO: add conclusion
 
 ## Useful links ##
 
