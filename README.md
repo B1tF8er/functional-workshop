@@ -295,7 +295,7 @@ public static class TestImmutability
     // once they are initialized. at run-time
     private static readonly string dashes = new string('-', 50);
     private static readonly IEnumerable<int> numbers = Enumerable.Range(1, int.MaxValue);
-å
+
     // const fields are immutable as well. at compile-time
     private const int Ten = 10;
     private const int Six = 6;
@@ -1329,11 +1329,11 @@ internal static class TestLINQ
 }
 ```
 
-## Conslusion ##
+## Conclusion ##
 
 I hope that this post has helped you to understand
 more about the Functional Programming paradigm and how can we use it
-in our projects, to improve `readability`, `testability` and `correcteness`
+in our projects, to improve `readability`, `testability` and `correctness`
 of our software. Remember that FP and OOP are orthogonal and you can use
 the best of both worlds.
 
