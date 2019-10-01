@@ -202,7 +202,7 @@ no side effects. Therefore they improve,
 
 - Testability
 - Correctness
-- Readibility
+- Readability
 
 With no side effects there are no surprises. our code
 does what it says, no more. and the cognitive load
