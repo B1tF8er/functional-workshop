@@ -1331,7 +1331,15 @@ internal static class TestLINQ
 
 ## Conslusion ##
 
-// TODO: add conclusion
+I hope that this post has helped you to understand
+more about the Functional Programming paradigm and how can we use it
+in our projects, to improve `readability`, `testability` and `correcteness`
+of our software. Remember that FP and OOP are orthogonal and you can use
+the best of both worlds.
+
+If you have any feedback or questions contact me at: [ofeth@hotmail.com](mailto:ofeth@hotmail.com)
+
+Happy coding!
 
 ## Useful links ##
 
