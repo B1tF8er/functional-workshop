@@ -139,7 +139,6 @@ can,
 using System;
 using System.Collections.Generic;
 using static System.Console;
-
 // you could use an alias to simplify types
 // int -> int -> int
 using Adder = System.Func<int, int, int>;
@@ -166,15 +165,34 @@ public class TestFirstClassFunctions
 
     // As return type and as parameter
     private static Adder Generator(Adder adder)
-    {
-        return adder;
-    }
+        => adder;
 }
 ```
 
 ## Higher Order Functions ##
 
-// TODO: add HOF explanation
+Higher Order Functions or `HOF`s are functions that take
+other functions as inputs or return a function as output, or both.
+
+```csharp
+using System;
+using static System.Console;
+using Subtractor = System.Func<int, int, int>;
+
+public class TestHigherOrderFunctions
+{
+    private readonly static Subtractor subtractor = (x, y) => x - y;
+
+    public static void Main() =>
+        WriteLine(Generator(subtractor)(44, 2));
+
+    // This is a HOF
+    // takes a functions as argument
+    // and returns a function
+    public static Subtractor Generator(Subtractor subtractor)
+        => subtractor;
+}
+```
 
 ## Pure Functions ##
 
