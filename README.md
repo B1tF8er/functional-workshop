@@ -27,15 +27,15 @@ and the return type is the third int.
 ```csharp
 using System;
 
-public class TestDelegates
+internal class TestDelegates
 {
     // int -> int -> int
-    public delegate int MyFirstSumDelegate(int x, int y);
+    private delegate int MyFirstSumDelegate(int x, int y);
 
     // int -> int -> int -> ()
-    public delegate void MySecondSumDelegate(int x, int y, int z);
+    private delegate void MySecondSumDelegate(int x, int y, int z);
 
-    public static void Main()
+    internal static void Run()
     {
         MyFirstSumDelegate myFirstSumDelegate = SumTwo;
 
@@ -43,19 +43,15 @@ public class TestDelegates
 
         Console.WriteLine(delegateResult);
 
-        MySecondSumDelegate mySecondSumDelegate = SumThree;
+        MySecondSumDelegate mySecondSumDelegate = SumThreeWithLog;
         mySecondSumDelegate(1, 2, 3);
     }
 
-    public static int SumTwo(int a, int b)
-    {
-        return a + b;
-    }
+    private static int SumTwo(int a, int b) => a + b;
 
-    public static void SumThree(int a, int b, int c)
+    private static void SumThreeWithLog(int a, int b, int c)
     {
         var result = a + b + c;
-
         Console.WriteLine(result);
     }
 }
@@ -68,12 +64,12 @@ are the arguments, and the last one, is the return type.
 ```csharp
 using System;
 
-public class TestFuncs
+internal class TestFuncs
 {
     // int -> int -> int
-    public delegate int MySumDelegate(int x, int y);
+    private delegate int MySumDelegate(int x, int y);
 
-    public static void Main()
+    internal static void Run()
     {
         MySumDelegate mySumDelegate = Sum;
         // int -> int -> int
@@ -86,10 +82,7 @@ public class TestFuncs
         Console.WriteLine(funcResult);
     }
 
-    public static int Sum(int a, int b)
-    {
-        return a + b;
-    }
+    private static int Sum(int a, int b) => a + b
 }
 ```
 
@@ -101,25 +94,24 @@ that takes 3 ints as arguments and returns void.
 ```csharp
 using System;
 
-public class TestActions
+internal class TestActions
 {
     // int -> int -> int -> ()
-    public delegate void MySumDelegate(int x, int y, int z);
+    private delegate void MySumDelegate(int x, int y, int z);
 
-    public static void Main()
+    internal static void Run()
     {
-        MySumDelegate mySumDelegate = Sum;
+        MySumDelegate mySumDelegate = SumWithLog;
         // int -> int -> int -> ()
-        Action<int, int, int> mySumAction = Sum;
+        Action<int, int, int> mySumAction = SumWithLog;
 
         mySumDelegate(1, 2, 3);
         mySumAction(1, 2, 3);
     }
 
-    public static void Sum(int a, int b, int c)
+    private static void SumWithLog(int a, int b, int c)
     {
         var result = a + b + c;
-
         Console.WriteLine(result);
     }
 }
@@ -143,12 +135,12 @@ using static System.Console;
 // int -> int -> int
 using Adder = System.Func<int, int, int>;
 
-public class TestFirstClassFunctions
+internal class TestFirstClassFunctions
 {
     // Assigned to a variable
     private readonly static Adder adder = (x, y) => x + y;
 
-    public static void Run()
+    internal static void Run()
     {
         // Stored in a collection
         var functions = new Dictionary<string, Adder>
@@ -164,8 +156,7 @@ public class TestFirstClassFunctions
     }
 
     // As return type and as parameter
-    private static Adder Generator(Adder adder)
-        => adder;
+    private static Adder Generator(Adder adder) => adder;
 }
 ```
 
@@ -179,11 +170,11 @@ using System;
 using static System.Console;
 using Subtractor = System.Func<int, int, int>;
 
-public class TestHigherOrderFunctions
+internal class TestHigherOrderFunctions
 {
     private readonly static Subtractor subtractor = (x, y) => x - y;
 
-    public static void Run() =>
+    internal static void Run() =>
         WriteLine(Generator(subtractor)(44, 2));
 
     // This is a HOF
@@ -211,15 +202,26 @@ to understand the code is less
 ```csharp
 using static System.Console;
 
-public class TestPureFunctions
+internal class TestPureFunctions
 {
-    public static void Run()
-    {
-        var ab = Join("a", "b");
-        var abab = Join(ab, ab);
+    private const string A = "a";
+    private const string B = "b";
+    private const string AB = "ab";
+    private const string ABAB = "ab";
 
-        WriteLine(ab);
-        WriteLine(abab);
+    internal static void Run()
+    {
+        var ab = Join(A, B);
+        // We can expect the same result always
+        // if we pass the same parameters
+        WriteLine(ab == AB);
+        WriteLine(Join(A, B) == AB);
+
+        var abab = Join(AB, AB);
+        // This also has an impact
+        // on Referential Transparency
+        WriteLine(abab == ABAB);
+        WriteLine(Join(AB, AB) == ABAB);
     }
 
     private static string Join(string lhs, string rhs)
@@ -248,9 +250,9 @@ if it does any of the following,
 ```csharp
 using static System.Console;
 
-public class TestSideEffects
+internal class TestSideEffects
 {
-    public static void Run()
+    internal static void Run()
     {
         var ab = JoinWithLogs("a", "b");
         var abab = JoinWithLogs(ab, ab);
@@ -289,7 +291,7 @@ using System.Collections.Immutable; // Nuget package
 using System.Linq;
 using static System.Console;
 
-public static class TestImmutability
+internal static class TestImmutability
 {
     // readonly fields are immutable
     // once they are initialized. at run-time
@@ -301,7 +303,7 @@ public static class TestImmutability
     private const int Six = 6;
     private const int Three = 3;
 
-    public static void Run()
+    internal static void Run()
     {
         List();
         Stack();
@@ -391,9 +393,9 @@ is the number of arguments or operands that the function takes,
 using System.Linq;
 using static System.Console;
 
-public class TestArity
+internal class TestArity
 {
-    public static void Run()
+    internal static void Run()
     {
         WriteLine(Nullary());
         WriteLine(Unary(1));
@@ -435,14 +437,14 @@ and can help you make your code clearer.
 ```csharp
 using static System.Console;
 
-public class TestReferentialTransparency
+internal class TestReferentialTransparency
 {
     private const int Two = 2;
     private const int Nine = 9;
     private const int Sixteen = 16;
     private const int Eighteen = 18;
 
-    public static void Run()
+    internal static void Run()
     {
         OperationsWithReferentialTransparency();
         OperationsWithoutReferentialTransparency();
