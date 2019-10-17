@@ -178,7 +178,7 @@ internal class TestHigherOrderFunctions
         WriteLine(Generator(subtractor)(44, 2));
 
     // This is a HOF
-    // takes a functions as argument
+    // takes a function as argument
     // and returns a function
     private static Subtractor Generator(Subtractor subtractor)
         => subtractor;
@@ -207,7 +207,7 @@ internal class TestPureFunctions
     private const string A = "a";
     private const string B = "b";
     private const string AB = "ab";
-    private const string ABAB = "ab";
+    private const string ABAB = "abab";
 
     internal static void Run()
     {
