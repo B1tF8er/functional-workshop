@@ -1,6 +1,6 @@
 # Functional Programming Concepts Applied Using C# #
 
-You have been curious about all the fuzz in recent years
+You have been curious about all the fuss in recent years
 about functional programming? but have not found how
 to apply it in your day to day work. Search no more.
 This post aims to give you a cheatsheet with functional concepts
