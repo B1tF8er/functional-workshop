@@ -3,7 +3,7 @@
 Arrow notations are the preferred syntax to read the signature of a function
 in Functional Programming lingo and they are right associative,
 
-`(int) -> ((int) -> (int))` **EQUALS** `int -> int -> int`
+`(int) -> ((int) -> (int))` **is equal to** `int -> int -> int`
 
 That can be read as a function that takes two integers as arguments
 and returns another integer. In C# we have three ways to create it,
