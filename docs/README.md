@@ -8,7 +8,7 @@ and techniques used in the .NET framework.
 
 ## How To Build And Run ##
 
-See the [scripts](../scripts/README.md)
+See the [scripts](./Scripts.md)
 
 ## Themes ##
 
