@@ -8,7 +8,7 @@ and techniques used in the .NET framework.
 
 ## How To Build And Run ##
 
-See the [scripts](https://github.com/B1tF8er/functional-workshop/tree/master/scripts/README.md)
+See the [scripts](../scripts/README.md)
 
 ## Themes ##
 
