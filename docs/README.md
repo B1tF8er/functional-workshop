@@ -31,6 +31,7 @@ See the [scripts](./Scripts.md)
 17. [Avoid Primitive Obsession](./AvoidPrimitiveObsession.md)
 18. [Generics](./Generics.md)
 19. [LINQ](./LINQ.md)
+20. [Recursion](./Recursion.md)
 
 ## Conclusion ##
 
