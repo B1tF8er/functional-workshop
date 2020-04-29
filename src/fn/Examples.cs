@@ -20,7 +20,8 @@ namespace fn
             { " Smart Constructors         ", TestSmartConstructors.Run },
             { " Avoid Primitive Obsession  ", TestAvoidPrimitiveObsession.Run },
             { " Generics                   ", TestGenerics.Run },
-            { " LINQ                       ", TestLINQ.Run }
+            { " LINQ                       ", TestLINQ.Run },
+            { " Recursion                  ", TestRecursion.Run }
         };
 
         internal static void Run()
